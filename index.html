@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Security Headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta http-equiv="X-Frame-Options" content="DENY" />
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <!-- Permissions Policy -->
+    <meta
+      http-equiv="Permissions-Policy"
+      content="camera=(), microphone=(), geolocation=()"
+    />
+    <title>Judah Schechter | Executive Software Engineer</title>
+    <link
+      rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap"
+      as="style"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css"
+    />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  </head>
+  <body>
+    <!-- Animated Character -->
+    <div class="animated-character">
+      <div class="speech-bubble">
+        <p>Let's connect</p>
+        <div class="speech-bubble-arrow"></div>
+      </div>
+      <img
+        src="https://cdn-icons-png.flaticon.com/512/4140/4140048.png"
+        alt="Professional Assistant"
+        id="assistant"
+      />
+    </div>
+
+    <!-- Navigation Bar with Social Links -->
+    <nav class="navbar">
+      <div class="container">
+        <div class="nav-links">
+          <!-- Navigation links removed -->
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-content">
+        <h1 class="main-quote">
+          In the realm of code, every line is a step towards innovation
+        </h1>
+        <p class="quote-subtext">Welcome to my digital universe</p>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+      <div class="container">
+        <div class="about-content">
+          <div class="about-text">
+            <h1>Judah Schechter</h1>
+            <p class="bio">
+              As a software engineer with extensive experience in tackling
+              complex technological challenges, I specialize in developing
+              innovative solutions for enterprise-level applications. My
+              approach combines technical expertise with a focus on creating
+              scalable, sustainable solutions that help drive business success.
+            </p>
+            <p class="bio">
+              I bring both theoretical knowledge and practical experience to
+              every project, always aiming for excellence and striving to
+              deliver results that truly make an impact.
+            </p>
+          </div>
+        </div>
+        <div class="tech-stack">
+          <h2>Technologies</h2>
+          <div class="tech-grid">
+            <div class="tech-item">.NET</div>
+            <div class="tech-item">C</div>
+            <div class="tech-item">C#</div>
+            <div class="tech-item">JavaScript</div>
+            <div class="tech-item">TypeScript</div>
+            <div class="tech-item">React</div>
+            <div class="tech-item">Redux</div>
+            <div class="tech-item">Angular</div>
+            <div class="tech-item">Node.js</div>
+            <div class="tech-item">PostgreSQL</div>
+            <div class="tech-item">Flutter</div>
+            <div class="tech-item">Arduino</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Hobbies Section -->
+    <section class="hobbies-section" id="hobbies">
+      <div class="container">
+        <h2>My Passions</h2>
+        <div class="hobbies-grid">
+          <div class="hobby-card" onclick="toggleHobby('technology')">
+            <i class="fas fa-laptop-code"></i>
+            <h3>Technology</h3>
+          </div>
+          <div class="hobby-card" onclick="toggleHobby('martial-arts')">
+            <i class="fas fa-fist-raised"></i>
+            <h3>Martial Arts</h3>
+          </div>
+          <div class="hobby-card" onclick="toggleHobby('travel')">
+            <i class="fas fa-globe"></i>
+            <h3>Travel</h3>
+          </div>
+        </div>
+        <div id="hobby-content" class="hobby-content">
+          <div id="technology-content" class="hobby-detail">
+            <h3>Technology</h3>
+            <p>
+              I am deeply involved in exploring and working with cutting-edge
+              technologies that not only solve everyday problems but also tackle
+              bigger challenges with the potential to change lives. My passion
+              lies in using innovative solutions to create meaningful, impactful
+              changes in the world. Whether it's developing software to automate
+              mundane tasks or building systems that empower individuals and
+              businesses, I am committed to leveraging technology for progress
+              and transformation.
+            </p>
+            <p>
+              Every day, I explore new technologies to streamline processes,
+              enhance user experiences, and drive efficiency. From artificial
+              intelligence to embedded systems, I embrace the full spectrum of
+              technological innovation. My approach combines technical expertise
+              with a deep understanding of human needs, ensuring that the
+              solutions I create make a real difference in people's lives.
+            </p>
+            <p>
+              I believe that technology is more than just a tool – it's a
+              catalyst for positive change. This belief drives me to
+              continuously learn, experiment, and push the boundaries of what's
+              possible, always with the goal of creating solutions that matter.
+            </p>
+          </div>
+          <div id="martial-arts-content" class="hobby-detail">
+            <h3>Martial Arts</h3>
+            <p>
+              My martial arts journey began with Krav Maga, where I learned
+              practical self-defense techniques focused on real-world
+              situations. This foundation in Krav Maga helped me develop
+              discipline, mental resilience, and strategic thinking.
+            </p>
+            <p>
+              Seeking further growth, I transitioned to Kyokushin, a style
+              renowned for its rigorous training and emphasis on toughness.
+              Here, I learned not only how to push my limits physically but also
+              how to cultivate inner strength and focus in the face of
+              adversity.
+            </p>
+            <p>
+              My passion for martial arts led me to train under the legendary
+              Ray Longo, whose expertise in mixed martial arts has had a
+              profound impact on my approach to both training and life. His
+              teachings have broadened my understanding of the sport, helping me
+              integrate striking and grappling techniques effectively.
+            </p>
+            <p>
+              To deepen my knowledge and further expand my skillset, I spent a
+              solid amount of time in Thailand, training under former and
+              current Muay Thai champions. This experience provided me with
+              invaluable insights into one of the most effective striking arts
+              in the world, shaping my approach to martial arts as a whole.
+            </p>
+            <p>
+              Through all of these experiences, martial arts has not only
+              enhanced my physical capabilities but has also shaped my mindset,
+              emphasizing perseverance, focus, and the drive for continuous
+              improvement. It continues to influence my approach to
+              problem-solving, both in and outside of the dojo.
+            </p>
+          </div>
+          <div id="travel-content" class="hobby-detail">
+            <h3>Travel</h3>
+            <p>
+              My travels have taken me to numerous countries, each offering
+              unique experiences and opportunities for growth. I've had the
+              privilege of living and staying in a couple of these countries for
+              extended periods, which has allowed me to immerse myself in
+              diverse cultures and philosophies.
+            </p>
+            <p>
+              These extended stays have not only broadened my understanding of
+              the world but also deepened my appreciation for the richness of
+              human experiences across different cultures. From learning new
+              languages to participating in local customs, each place has
+              contributed to shaping my perspective in profound ways.
+            </p>
+            <p>
+              Through my travels, I've been exposed to various ways of thinking,
+              working, and living, which have had a significant impact on how I
+              approach both my personal and professional life. The philosophies
+              I've encountered have taught me valuable lessons in adaptability,
+              empathy, and the importance of understanding different worldviews.
+            </p>
+            <p>
+              Whether exploring the bustling streets of vibrant cities or
+              finding peace in quieter, more remote areas, my travel experiences
+              have continuously fueled my curiosity and inspired my creative
+              process. Each journey has played an integral role in shaping the
+              way I approach challenges and opportunities in my work.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section" id="services">
+      <div class="container">
+        <h2>Professional Services</h2>
+        <div class="services-grid">
+          <div class="service-card">
+            <i class="fas fa-code"></i>
+            <h3>Web Development</h3>
+            <p>
+              Custom web applications built with modern technologies and best
+              practices. Specializing in responsive design, performance
+              optimization, and user experience excellence.
+            </p>
+          </div>
+          <div class="service-card">
+            <i class="fas fa-headset"></i>
+            <h3>IT Support</h3>
+            <p>
+              Comprehensive IT support services including system maintenance,
+              troubleshooting, and technical assistance. Ensuring smooth
+              operations and minimal downtime for your business.
+            </p>
+          </div>
+          <div class="service-card">
+            <i class="fas fa-lightbulb"></i>
+            <h3>Tech Consulting</h3>
+            <p>
+              Strategic technology consulting to help businesses make informed
+              decisions. From system architecture to digital transformation,
+              providing expert guidance for your technical needs.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Career Highlights -->
+    <section class="career-section" id="career">
+      <div class="container">
+        <h2>Professional Journey</h2>
+        <div class="timeline">
+          <div class="milestone">
+            <h3>Military Leadership</h3>
+            <p>
+              Distinguished service in active military roles, developing
+              exceptional leadership capabilities and strategic decision-making
+              skills in high-pressure environments.
+            </p>
+          </div>
+          <div class="milestone">
+            <h3>National Service Commitment</h3>
+            <p>
+              Continued commitment to national service while advancing
+              professional expertise, maintaining operational readiness and
+              contributing to strategic initiatives.
+            </p>
+          </div>
+          <div class="milestone">
+            <h3>Enterprise Solutions</h3>
+            <p>
+              I'm constantly pushing the boundaries of personal innovation while
+              leading enterprise-level projects, using my full-stack expertise
+              and cutting-edge technologies to tackle complex business
+              challenges.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials-section" id="testimonials">
+      <div class="container">
+        <h2>Professional Endorsements</h2>
+        <div class="testimonials-grid">
+          <div class="testimonial-card">
+            <blockquote>
+              "I've relied on Judah for technical support with issues ranging
+              from my computer and iPhone to car connectivity. His quick and
+              efficient solutions, along with fast turnaround times, have been
+              invaluable. I highly recommend Judah for reliable, fast support."
+            </blockquote>
+            <cite>- Joe L.</cite>
+          </div>
+          <div class="testimonial-card">
+            <blockquote>
+              "Judah's strategic insights and technical expertise in app
+              development have been instrumental in guiding our project. The
+              level of professionalism and commitment to excellence he brings
+              has truly set a new standard in our approach."
+            </blockquote>
+            <cite>- Jacques H.</cite>
+          </div>
+          <div class="testimonial-card">
+            <blockquote>
+              "Working with Judah was a pleasure. He turned my vision for a
+              website into a stunning, user-friendly platform. His attention to
+              detail, seamless functionality, and responsiveness truly set his
+              work apart. Highly recommend Judah for anyone needing a
+              top-quality website!"
+            </blockquote>
+            <cite>- David S.</cite>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Articles Section -->
+    <section class="articles-section" id="articles">
+      <div class="container">
+        <h2>Latest Articles</h2>
+        <div class="articles-grid">
+          <!-- Future of Enterprise Article -->
+          <!--
+          <article class="article-card">
+            <div class="article-image">
+              <img
+                src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                alt="Enterprise Technology"
+              />
+            </div>
+            <div class="article-content">
+              <h3>The Future of Enterprise Technology</h3>
+              <p class="article-preview">
+                Exploring the transformative trends shaping the future of enterprise
+                technology, from AI integration to sustainable computing
+                practices...
+              </p>
+              <a href="#" class="read-more">Read More</a>
+            </div>
+          </article>
+          -->
+          <div class="article-empty-state">
+            <i class="fas fa-newspaper"></i>
+            <h3>More Articles Coming Soon</h3>
+            <p>
+              Stay tuned for insights on technology, innovation, and industry
+              trends.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section id="contact" class="contact-section">
+      <div class="container">
+        <div class="contact-form-container">
+          <form class="contact-form" onsubmit="handleSubmit(event)">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                placeholder="Your name"
+              />
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                placeholder="Your email"
+              />
+            </div>
+            <div class="form-group">
+              <label for="contact-reason">Contact Reason</label>
+              <select id="contact-reason" name="contact-reason" required>
+                <option value="">Select a reason</option>
+                <option value="business">Business Inquiry</option>
+                <option value="partnership">Partnership Opportunity</option>
+                <option value="networking">Networking</option>
+                <option value="media">Media / Press Inquiries</option>
+                <option value="speaking">Speaking Engagement</option>
+                <option value="feedback">Feedback / Suggestions</option>
+                <option value="career">Career Opportunities</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="form-group full-width">
+              <label for="message">Message</label>
+              <textarea
+                id="message"
+                name="message"
+                required
+                placeholder="Your message"
+                rows="5"
+              ></textarea>
+            </div>
+            <div class="form-group full-width">
+              <div
+                class="g-recaptcha"
+                data-sitekey="6LdJrvwqAAAAAMG_dZLBSk2T4LyiblhxRJ26PCOE"
+              ></div>
+            </div>
+            <button type="submit" class="submit-btn">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Error Modal -->
+    <div class="error-modal" id="errorModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <i class="fas fa-exclamation-circle"></i>
+          <h3>Submission Error</h3>
+        </div>
+        <div class="modal-body">
+          <p>
+            There was an error submitting your message. Please try again later.
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button onclick="closeErrorModal()">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Final Quote -->
+    <section class="final-quote-section">
+      <div class="container">
+        <div class="quote-content">
+          <h2 class="quote-text">"Vivamus, moriendum est"</h2>
+          <p class="quote-translation">"Let us live, since we must die"</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-links">
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="terms-of-service.html">Terms of Service</a>
+        </div>
+        <p>&copy; 2025 Judah Schechter. All rights reserved.</p>
+        <div class="attributions">
+          <p>Powered by:</p>
+          <ul>
+            <li>
+              Font Awesome 6.0.0 -
+              <a href="https://fontawesome.com/license">License</a>
+            </li>
+            <li>Devicon - <a href="https://devicon.dev/">License</a></li>
+            <li>
+              Google Fonts (Inter) -
+              <a href="https://fonts.google.com/specimen/Inter">License</a>
+            </li>
+          </ul>
+        </div>
+        <p class="attribution-link">
+          <a href="https://www.flaticon.com/free-icons/boy" title="boy icons"
+            >Boy icons created by Freepik - Flaticon</a
+          >
+        </p>
+      </div>
+    </footer>
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-consent" class="cookie-consent">
+      <div class="cookie-content">
+        <p>
+          This website uses cookies to ensure you get the best experience. By
+          continuing to use this site, you consent to our use of cookies.
+        </p>
+        <div class="cookie-buttons">
+          <button onclick="acceptCookies()" class="accept-cookies">
+            Accept
+          </button>
+          <a href="privacy-policy.html" class="learn-more">Learn More</a>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="security.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
