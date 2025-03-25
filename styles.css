@@ -301,21 +301,31 @@ html {
 }
 
 .tech-item {
-  padding: 20px;
+  flex: 0 0 200px;
+  height: 80px;
   background: var(--card-background);
   border: 1px solid var(--border-color);
   border-radius: 0;
-  text-align: center;
-  font-size: 1.1rem;
-  font-weight: 300;
-  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
   transition: all 0.3s ease;
+  cursor: pointer;
+  white-space: nowrap;
 }
 
 .tech-item:hover {
   transform: translateY(-5px);
   border-color: var(--primary-color);
-  color: var(--primary-color);
+}
+
+.tech-item span {
+  font-size: 1.2rem;
+  color: var(--text-color);
+  text-align: center;
+  font-weight: 300;
+  letter-spacing: 1px;
 }
 
 /* Hobbies Section */
@@ -1356,4 +1366,241 @@ textarea:focus {
 /* Add smooth scrolling for all devices */
 html {
   scroll-behavior: smooth;
+}
+
+/* Technologies Section */
+.technologies-section {
+  padding: 80px 0;
+  background: var(--secondary-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.technologies-section .section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  color: var(--text-color);
+  font-weight: 300;
+}
+
+.tech-carousel {
+  position: relative;
+  width: 100%;
+  height: 100px;
+  margin: 40px auto;
+  overflow: hidden;
+}
+
+.tech-carousel-container {
+  display: flex;
+  gap: 20px;
+  padding: 0 20px;
+  animation: flow 10s linear infinite;
+}
+
+.tech-carousel-container:hover {
+  animation-play-state: paused;
+}
+
+@keyframes flow {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-50% - 10px));
+  }
+}
+
+.tech-item {
+  flex: 0 0 200px;
+  height: 80px;
+  background: var(--card-background);
+  border: 1px solid var(--border-color);
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.tech-item:hover {
+  transform: translateY(-5px);
+  border-color: var(--primary-color);
+}
+
+.tech-item span {
+  font-size: 1.2rem;
+  color: var(--text-color);
+  text-align: center;
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+
+.carousel-control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  background: var(--card-background);
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  font-size: 1rem;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  opacity: 0;
+  backdrop-filter: blur(5px);
+}
+
+.tech-carousel:hover .carousel-control {
+  opacity: 1;
+}
+
+.carousel-control:hover {
+  background: var(--primary-color);
+  color: var(--secondary-color);
+  border-color: var(--primary-color);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-control.prev {
+  left: 20px;
+}
+
+.carousel-control.next {
+  right: 20px;
+}
+
+/* Mobile responsiveness for tech carousel */
+@media screen and (max-width: 768px) {
+  .tech-carousel {
+    height: 80px;
+  }
+
+  .tech-carousel-container {
+    animation: flow 7s linear infinite;
+  }
+
+  .carousel-control {
+    width: 35px;
+    height: 35px;
+    font-size: 0.9rem;
+    opacity: 1;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .tech-carousel {
+    height: 70px;
+  }
+
+  .tech-carousel-container {
+    animation: flow 5s linear infinite;
+  }
+
+  .carousel-control {
+    width: 30px;
+    height: 30px;
+    font-size: 0.8rem;
+  }
+}
+
+/* Error Modal */
+.error-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: var(--secondary-color);
+  padding: 2rem;
+  border: 1px solid var(--border-color);
+  border-radius: 0;
+  max-width: 400px;
+  width: 90%;
+  position: relative;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.modal-header i {
+  color: var(--primary-color);
+  font-size: 1.5rem;
+}
+
+.modal-header h3 {
+  color: var(--text-color);
+  font-size: 1.5rem;
+  font-weight: 300;
+}
+
+.modal-body {
+  margin-bottom: 1.5rem;
+}
+
+.modal-body p {
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.modal-footer button {
+  background: var(--primary-color);
+  color: var(--secondary-color);
+  border: none;
+  padding: 0.75rem 1.5rem;
+  cursor: pointer;
+  font-weight: 300;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+.modal-footer button:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+/* Success Message */
+.success-message {
+  background: var(--card-background);
+  border: 1px solid var(--primary-color);
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  animation: fadeIn 0.3s ease;
+}
+
+.success-message h3 {
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+  font-weight: 300;
+}
+
+.success-message p {
+  color: var(--text-color);
+  font-weight: 300;
 }

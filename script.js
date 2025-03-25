@@ -21,7 +21,7 @@ setTimeout(() => {
   const heroSection = document.querySelector(".hero-section");
   heroSection.classList.add("fade-out");
   document.body.style.overflow = "auto";
-},4000);
+}, 4000);
 
 // Animated character
 const character = document.querySelector(".animated-character");
@@ -208,8 +208,10 @@ async function handleSubmit(event) {
       }
     );
 
+    const responseData = await formResponse.json();
+
     if (!formResponse.ok) {
-      throw new Error("Form submission failed");
+      throw new Error(responseData.error || "Form submission failed");
     }
 
     // Clear form and reCAPTCHA
@@ -217,14 +219,39 @@ async function handleSubmit(event) {
     grecaptcha.reset();
 
     // Show success message
-    alert("Thank you for your message. I will get back to you soon!");
+    const successMessage = document.createElement("div");
+    successMessage.className = "success-message";
+    successMessage.innerHTML = `
+      <h3>Thank you for your message!</h3>
+      <p>I will get back to you soon.</p>
+    `;
+    form.parentNode.insertBefore(successMessage, form);
+
+    // Remove success message after 5 seconds
+    setTimeout(() => {
+      successMessage.remove();
+    }, 5000);
   } catch (error) {
     console.error("Error:", error);
-    alert(
-      "There was an error submitting your message. Please try again later."
-    );
+    // Show error in the error modal instead of alert
+    const errorModal = document.getElementById("errorModal");
+    errorModal.style.display = "flex";
   }
 }
+
+// Function to close error modal
+function closeErrorModal() {
+  const errorModal = document.getElementById("errorModal");
+  errorModal.style.display = "none";
+}
+
+// Close error modal when clicking outside
+window.onclick = function (event) {
+  const errorModal = document.getElementById("errorModal");
+  if (event.target === errorModal) {
+    errorModal.style.display = "none";
+  }
+};
 
 // Smooth Scroll
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
@@ -246,3 +273,18 @@ AOS.init({
   once: true,
   offset: 100,
 });
+
+// Technologies Carousel
+function initTechCarousel() {
+  const container = document.querySelector(".tech-carousel-container");
+
+  // Reset animation when it ends to create seamless loop
+  container.addEventListener("animationend", () => {
+    container.style.animation = "none";
+    container.offsetHeight; // Trigger reflow
+    container.style.animation = null;
+  });
+}
+
+// Initialize carousel when DOM is loaded
+document.addEventListener("DOMContentLoaded", initTechCarousel);
