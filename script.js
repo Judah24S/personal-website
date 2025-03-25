@@ -21,7 +21,7 @@ setTimeout(() => {
   const heroSection = document.querySelector(".hero-section");
   heroSection.classList.add("fade-out");
   document.body.style.overflow = "auto";
-}, 2000);
+},4000);
 
 // Animated character
 const character = document.querySelector(".animated-character");
