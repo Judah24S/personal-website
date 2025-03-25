@@ -101,43 +101,30 @@ const hobbyContent = {
     `,
 };
 
+let currentHobby = null;
+
 function toggleHobby(hobby) {
-  const content = document.getElementById("hobby-content");
-  const currentHobby = content.getAttribute("data-hobby");
-  const allDetails = document.querySelectorAll(".hobby-detail");
+  const contentDiv = document.getElementById("hobby-content");
 
-  // Hide all hobby details
-  allDetails.forEach((detail) => detail.classList.remove("active"));
-
-  // If clicking the same hobby, hide the content
   if (currentHobby === hobby) {
-    content.classList.remove("active");
-    content.setAttribute("data-hobby", "");
+    // Close the current hobby
+    contentDiv.classList.remove("active");
+    currentHobby = null;
     return;
   }
 
-  // Show new hobby content
-  const targetDetail = document.getElementById(`${hobby}-content`);
-  targetDetail.classList.add("active");
-  content.classList.add("active");
-  content.setAttribute("data-hobby", hobby);
-}
+  // Close any open hobby first
+  contentDiv.classList.remove("active");
 
-function getHobbyContent(hobby) {
-  const content = hobbyContent[hobby];
-  if (!content) return "";
+  // Set new content
+  contentDiv.innerHTML = hobbyContent[hobby]
+    .split("\n\n")
+    .map((paragraph) => `<p>${paragraph.trim()}</p>`)
+    .join("");
 
-  // Split the content into paragraphs and format them
-  return `
-    <h3>${hobby
-      .split("-")
-      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(" ")}</h3>
-    ${content
-      .split("\n\n")
-      .map((paragraph) => `<p>${paragraph.trim()}</p>`)
-      .join("")}
-  `;
+  // Show new content
+  contentDiv.classList.add("active");
+  currentHobby = hobby;
 }
 
 // Close hobby content when clicking outside
@@ -154,9 +141,7 @@ document.addEventListener("click", (e) => {
 
   if (!clickedInside && !hobbyContent.contains(e.target)) {
     hobbyContent.classList.remove("active");
-    document
-      .querySelectorAll(".hobby-detail")
-      .forEach((detail) => detail.classList.remove("active"));
+    currentHobby = null;
   }
 });
 
@@ -186,104 +171,59 @@ async function handleSubmit(event) {
 
   // Basic form validation
   if (!name || !email || !contactReason || !message) {
-    showErrorModal("Please fill in all required fields");
+    alert("Please fill in all required fields");
     return;
   }
 
   // Email validation
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(email)) {
-    showErrorModal("Please enter a valid email address");
+    alert("Please enter a valid email address");
     return;
   }
 
   // Validate reCAPTCHA
   const recaptchaResponse = grecaptcha.getResponse();
   if (!recaptchaResponse) {
-    showErrorModal("Please complete the reCAPTCHA verification");
+    alert("Please complete the reCAPTCHA verification");
     return;
   }
 
   try {
     // Using Google Scripts for form handling
     const formResponse = await fetch(
-      "https://script.google.com/macros/s/AKfycbxG9dpZNQ_kuW1moRJ_Opk9cMCAoTmYKeDDP4ql_IL6PYrRebvpZIJqNmrOsoJgR5oX/exec",
+      "https://script.google.com/macros/s/AKfycbxTe58gSAgtiCbSKQbOY5Yi73xaiPR9qWw45L3PGavJchKQlCz8-S6R_nEr1M-bYwNR/exec",
       {
         method: "POST",
-        mode: "no-cors",
-        body: formData,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          contactReason,
+          message,
+          recaptchaToken: recaptchaResponse,
+        }),
       }
     );
 
-    // Since we're using no-cors mode, we can't check the response status
-    // Instead, we'll assume success if the request completes without throwing an error
+    if (!formResponse.ok) {
+      throw new Error("Form submission failed");
+    }
+
+    // Clear form and reCAPTCHA
     form.reset();
     grecaptcha.reset();
-    showSuccessMessage();
+
+    // Show success message
+    alert("Thank you for your message. I will get back to you soon!");
   } catch (error) {
-    console.error("Form submission error:", error);
-    showErrorModal("There was an error submitting the form. Please try again.");
+    console.error("Error:", error);
+    alert(
+      "There was an error submitting your message. Please try again later."
+    );
   }
-}
-
-function showSuccessMessage() {
-  const formContainer = document.querySelector(".contact-form-container");
-  formContainer.innerHTML = `
-    <div class="success-message">
-      <i class="fas fa-check-circle"></i>
-      <h3>Thank You!</h3>
-      <p>I appreciate you reaching out. I will review your message and get back to you shortly.</p>
-      <button class="reset-form-btn" onclick="resetContactForm()">Send Another Message</button>
-    </div>
-  `;
-}
-
-function resetContactForm() {
-  const formContainer = document.querySelector(".contact-form-container");
-  formContainer.innerHTML = `
-    <form class="contact-form" onsubmit="handleSubmit(event)">
-      <div class="form-group">
-        <label for="name">Name</label>
-        <input type="text" id="name" name="name" required placeholder="Your name" />
-      </div>
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" required placeholder="Your email" />
-      </div>
-      <div class="form-group">
-        <label for="contact-reason">Contact Reason</label>
-        <select id="contact-reason" name="contact-reason" required>
-          <option value="">Select a reason</option>
-          <option value="job">Job Opportunity</option>
-          <option value="project">Project Collaboration</option>
-          <option value="freelance">Freelance Work</option>
-          <option value="other">Other</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="message">Message</label>
-        <textarea id="message" name="message" required placeholder="Your message" rows="5"></textarea>
-      </div>
-      <div class="g-recaptcha" data-sitekey="6LdJrvwqAAAAAMG_dZLBSk2T4LyiblhxRJ26PCOE"></div>
-      <button type="submit" class="submit-btn">Send Message</button>
-    </form>
-  `;
-  // Reload reCAPTCHA
-  grecaptcha.render(document.querySelector(".g-recaptcha"));
-}
-
-// Function to show error modal
-function showErrorModal(message) {
-  const modal = document.getElementById("errorModal");
-  const modalMessage = modal.querySelector(".modal-body p");
-  modalMessage.textContent = message;
-  modal.classList.add("show");
-}
-
-// Function to close error modal
-function closeErrorModal() {
-  const modal = document.getElementById("errorModal");
-  modal.classList.remove("show");
 }
 
 // Smooth Scroll
